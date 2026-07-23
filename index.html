@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mimos 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+</head>
+<body>
+  <!-- florzinhas flutuando no fundo -->
+  <div class="flores" aria-hidden="true"></div>
+
+  <main class="cartao">
+    <header class="cabecalho">
+      <div class="selo">🌸</div>
+      <h1>Me manda um mimo</h1>
+      <p class="subtitulo">Escolha um valor fofo ou digite o seu ♡</p>
+    </header>
+
+    <!-- Passo 1: escolher valor -->
+    <section id="passo-valor" class="passo">
+      <div class="blocos" id="blocos">
+        <button class="bloco" data-valor="50">R$ 50</button>
+        <button class="bloco" data-valor="100">R$ 100</button>
+        <button class="bloco" data-valor="200">R$ 200</button>
+        <button class="bloco" data-valor="500">R$ 500</button>
+        <button class="bloco bloco-largo" data-valor="1000">R$ 1000</button>
+      </div>
+
+      <div class="ou"><span>ou</span></div>
+
+      <div class="campo-valor">
+        <span class="prefixo">R$</span>
+        <input
+          type="number"
+          id="valorCustom"
+          placeholder="outro valor"
+          min="10"
+          step="1"
+          inputmode="numeric"
+        />
+      </div>
+      <p class="dica" id="dicaMinimo">Valor mínimo: R$ 10 🌷</p>
+
+      <button class="botao-principal" id="continuar">Continuar ♡</button>
+      <p class="erro escondido" id="erro"></p>
+    </section>
+
+    <!-- Passo 3: pix gerado -->
+    <section id="passo-pix" class="passo escondido">
+      <p class="resumo">Aponte a câmera ou copie o código 💖</p>
+      <div class="qr-moldura">
+        <img id="qrImg" alt="QR code do PIX" />
+      </div>
+      <p class="valor-pix" id="valorPix"></p>
+      <div class="copia-cola">
+        <input type="text" id="pixCodigo" readonly />
+        <button class="botao-copiar" id="copiar">Copiar</button>
+      </div>
+      <p class="status-pgto" id="statusPgto">
+        <span class="bolinha"></span> aguardando pagamento…
+      </p>
+      <button class="voltar" id="voltarPix">começar de novo</button>
+    </section>
+
+    <!-- Passo 4: obrigada! -->
+    <section id="passo-obrigada" class="passo escondido">
+      <div class="selo-grande">🌸💖🌸</div>
+      <h2 class="titulo-obrigada">Obrigada pelo mimo!</h2>
+      <p class="resumo">Seu carinho de <strong id="valorObrigada"></strong> chegou certinho 🥰</p>
+      <button class="botao-principal" id="maisMimo">Dar mais um mimo ♡</button>
+    </section>
+
+    <!-- carregando -->
+    <div id="carregando" class="carregando escondido">
+      <div class="flor-girando">🌸</div>
+      <p>preparando seu mimo...</p>
+    </div>
+  </main>
+
+  <footer class="rodape">feito com ♡ e florzinhas</footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
