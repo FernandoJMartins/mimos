@@ -293,10 +293,16 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`\n🌸 Site de mimos rodando em http://localhost:${PORT}`);
-  console.log(`   Valor mínimo: R$ ${MIN_AMOUNT}`);
-  if (!SYNCPAY_CLIENT_ID || !SYNCPAY_CLIENT_SECRET) {
-    console.log('⚠️  Configure suas credenciais no arquivo .env antes de gerar PIX.\n');
-  }
-});
+// Sobe o servidor só quando rodando localmente (node server.js).
+// Na Vercel o app é importado como serverless function e NÃO usa app.listen.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`\n🌸 Site de mimos rodando em http://localhost:${PORT}`);
+    console.log(`   Valor mínimo: R$ ${MIN_AMOUNT}`);
+    if (!SYNCPAY_CLIENT_ID || !SYNCPAY_CLIENT_SECRET) {
+      console.log('⚠️  Configure suas credenciais no arquivo .env antes de gerar PIX.\n');
+    }
+  });
+}
+
+export default app;
